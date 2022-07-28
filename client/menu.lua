@@ -55,16 +55,19 @@ openMenu = function(shopId)
             if (shopBasket.article <= 0) then
                 RageUI.Button("~r~Aucun article dans le panier!", nil, {RightBadge = RageUI.BadgeStyle.Alert}, true, {})
             else
-                for _, v in pairs(shopBasket.items) do
+                for k, v in pairs(shopBasket.items) do
                     if (v.qty >= 1) then
 
                         RageUI.Button(("[~r~x%s~s~] %s"):format(v.qty, v.label), "Cliquez sur [~b~ENTER~s~] pour retirer du panier", {}, true, {
                             onSelected = function()
                                 local removeQty = tonumber(KeyboardInput("Entrez la quantité", nil, 2))
+                                if (not removeQty) then
+                                    return
+                                end
                                 if (removeQty > v.qty) then
                                     return
                                 end
-                                shopBasket.totalPrice = shopBasket.totalPrice - v.price
+                                shopBasket.totalPrice = shopBasket.totalPrice - (v.price * removeQty)
                                 shopBasket.article = shopBasket.article - removeQty
                                 v.qty = v.qty - removeQty
                             end
