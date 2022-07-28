@@ -40,7 +40,7 @@ openMenu = function(shopId)
                             else
                                 shopBasket.items[v.Name] = { label = v.Label, qty = 1, price = v.Price}
                             end
-                            ESX.ShowNotification("~g~Vous Vous avez ajouté un article à votre panier")
+                            ESX.ShowNotification("~g~Vous avez ajouté un article à votre panier")
                             shopBasket.article = shopBasket.article + 1
                             shopBasket.totalPrice = shopBasket.totalPrice + v.Price
                         end
