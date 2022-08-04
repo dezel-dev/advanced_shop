@@ -1,7 +1,6 @@
 RegisterNetEvent("advanced_shop:payment", function(items, total, article, shopId)
     local _src = source
     local xPlayer = ESX.GetPlayerFromId(_src)
-    xPlayer.setMoney(5000)
     if (xPlayer.getMoney() < total) then
         return TriggerClientEvent("esx:showNotification", _src, "~r~Vous n'avez pas assez d'argent pour vous acheter les articles")
     end
